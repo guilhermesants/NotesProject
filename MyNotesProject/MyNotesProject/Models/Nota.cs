@@ -13,5 +13,7 @@ namespace MyNotesProject.Models
         public string Nome_Lembrete { get; set; }
         public string descricao_Lembrete { get; set; }
         public DateTime Data_Lembrete { get; set; }
+
+        public string IdUsuario { get; set; }
     }
 }

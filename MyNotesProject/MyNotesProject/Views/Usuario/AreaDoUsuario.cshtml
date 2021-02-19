@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "AreaDoUsuario";
+}
+
+<div class="lembrete-alinhamento lembrete-family lembrete-color">
+    <h1>Meus Lembretes</h1>
+</div>
+
+<div class="container lembrete-alinhamento lembrete-family">
+    <div class="form-group botton-criarlembrete">
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <a class="btn btn-success" asp-area="" asp-controller="Lembrete" asp-action="CriarLembrete">Adicionar novo lembrete</a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a class="btn btn-primary" asp-area="" asp-controller="Usuario" asp-action="ListarLembretes">Ver meus lembretes</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

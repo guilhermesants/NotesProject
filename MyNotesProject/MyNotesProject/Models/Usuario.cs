@@ -9,5 +9,6 @@ namespace MyNotesProject.Models
     public class Usuario : IdentityUser
     {
         public string NomeCompleto { get; set; }
+
     }
 }

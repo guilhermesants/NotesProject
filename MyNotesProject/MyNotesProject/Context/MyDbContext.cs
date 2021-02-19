@@ -15,5 +15,17 @@ namespace MyNotesProject.Context
         }
 
         public DbSet<Nota> notas { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Usuario>(org =>
+            {
+                org.ToTable("usuarios");
+                org.HasKey(x => x.Id);
+                org.HasMany<Nota>().WithOne().HasForeignKey(x => x.IdUsuario).IsRequired(false);
+            });
+        }
     }
 }

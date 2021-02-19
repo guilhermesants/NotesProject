@@ -54,6 +54,8 @@ namespace MyNotesProject
             
             services.AddScoped<IUserStore<Usuario>, 
                 UserOnlyStore<Usuario, MyUsuarioDbContext>>();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuario/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +71,8 @@ namespace MyNotesProject
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseStaticFiles();
 
