@@ -5,12 +5,13 @@
 }
 
 
-    <div class="lembrete-alinhamento lembrete-family">
+    <div class="lembrete-alinhamento lembrete-family lembrete-color">
+        <br />
         <h1>Novo Lembrete</h1>
     </div>
     <hr />
     <div class="row">
-        <div class="col-md-4 container lembrete-alinhamento">
+        <div class="col-md-4 container lembrete-alinhamento lembrete-family justify-content-center">
             <form asp-action="CriarLembrete">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -28,13 +29,23 @@
                     <input type="date" asp-for="Data_Lembrete" class="form-control" />
                     <span asp-validation-for="Data_Lembrete" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Criar Lembrete" class="btn btn-primary" />
+                <div class="form-group botton-criarlembrete">
+                    <table>
+                        <tr>
+                            <td>
+                                <div>
+                                    <input type="submit" value="Criar Lembrete" class="btn btn-primary" />
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <a class="btn btn-secondary" asp-area="" asp-controller="Lembrete">Retornar à lista</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </form>
-            <div>
-                <a class="btn btn-secondary" asp-area="" asp-controller="Lembrete">Retornar à lista</a>
-            </div>
         </div>
     </div>
 

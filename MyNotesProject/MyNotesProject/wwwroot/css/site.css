@@ -8,7 +8,20 @@ a.navbar-brand {
     font-family: Apple Chancery, cursive
 }
 
-.lembrete-family{
+.navbar-nav {
+    font-family: Apple Chancery, cursive;
+    background-color:transparent; 
+}
+
+.container {
+    justify-content: center;
+}
+
+.botton-criarlembrete{
+    display: inline-block;
+}
+
+.lembrete-family {
     font-family: Apple Chancery, cursive
 }
 
@@ -82,6 +95,10 @@ body {
 
 .lembrete-alinhamento {
     text-align: center;
+}
+
+.lembrete-color{
+    color:crimson;
 }
 
 .row{
