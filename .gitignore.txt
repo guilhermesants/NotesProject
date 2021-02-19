@@ -1,0 +1,3 @@
+MyNotesProject/MyNotesProject/bin
+MyNotesProject/MyNotesProject/Migrations
+MyNotesProject/MyNotesProject/obj

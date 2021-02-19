@@ -1,0 +1,44 @@
+﻿@model MyNotesProject.Models.Nota
+
+@{
+    ViewData["Title"] = "CriarLembrete";
+}
+
+
+    <div class="lembrete-alinhamento lembrete-family">
+        <h1>Novo Lembrete</h1>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 container lembrete-alinhamento">
+            <form asp-action="CriarLembrete">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nome_Lembrete" class="control-label">Nome do lembrete</label>
+                    <input asp-for="Nome_Lembrete" class="form-control" />
+                    <span asp-validation-for="Nome_Lembrete" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="descricao_Lembrete" class="control-label">Descrição do lembrete</label>
+                    <input asp-for="descricao_Lembrete" class="form-control" />
+                    <span asp-validation-for="descricao_Lembrete" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Data_Lembrete" class="control-label">Data de expiração do lembrete</label>
+                    <input type="date" asp-for="Data_Lembrete" class="form-control" />
+                    <span asp-validation-for="Data_Lembrete" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Criar Lembrete" class="btn btn-primary" />
+                </div>
+            </form>
+            <div>
+                <a class="btn btn-secondary" asp-area="" asp-controller="Lembrete">Retornar à lista</a>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
