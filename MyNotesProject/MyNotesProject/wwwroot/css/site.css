@@ -13,6 +13,12 @@ a.navbar-brand {
     background-color:transparent; 
 }
 
+.flex-box{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .container {
     justify-content: center;
 }

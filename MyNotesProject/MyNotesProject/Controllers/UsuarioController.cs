@@ -66,7 +66,8 @@ namespace MyNotesProject.Controllers
 
                         await HttpContext.SignInAsync("Identity.Application", principal);
 
-                        return RedirectToAction("ListarLembretes", new { id = user.Id});
+                        //return RedirectToAction("ListarLembretes", new { id = user.Id});
+                        return RedirectToAction("AreaDoUsuario", new { id = user.Id });
                     }
 
                     ModelState.AddModelError("", "Usuário ou senha inválida");
@@ -86,8 +87,9 @@ namespace MyNotesProject.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AreaDoUsuario()
+        public async Task<IActionResult> AreaDoUsuario(string? id)
         {
+            
             return View();
         }
     }
