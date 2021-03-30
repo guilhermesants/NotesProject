@@ -91,11 +91,13 @@ namespace MyNotesProject.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> ListarLembretes(string id)
         {
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> AreaDoUsuario()
         {
             

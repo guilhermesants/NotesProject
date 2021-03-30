@@ -11,6 +11,8 @@ namespace MyNotesProject.Repositories
         void add(Nota nota);
         IEnumerable<Nota> notas { get; }
         Nota GetNotaById(int id);
+
+        IEnumerable<Nota> notasDoUsuario(string id);
         Nota GetNotaByName(string name);
         void Save();
     }

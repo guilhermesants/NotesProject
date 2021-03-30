@@ -51,6 +51,7 @@ namespace MyNotesProject
             services.AddIdentity<Usuario, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = false;
+                
             })
                 .AddEntityFrameworkStores<MyUsuarioDbContext>()
                 .AddDefaultTokenProviders();
@@ -62,7 +63,7 @@ namespace MyNotesProject
             services.AddScoped<IUserStore<Usuario>, 
                 UserOnlyStore<Usuario, MyUsuarioDbContext>>();
 
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuario/Login");
+            //services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuario/Login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,7 +93,7 @@ namespace MyNotesProject
                 //endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Lembrete}/{action=CriarLembrete}/{id?}");
+                    pattern: "{controller=Usuario}/{action=Login}/{id?}");
             });
         }
     }

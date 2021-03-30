@@ -36,6 +36,16 @@ namespace MyNotesProject.Repositories
             return nota;
         }
 
+        public IEnumerable<Nota> notasDoUsuario(string id)
+        {
+            IQueryable<Nota> query = _context.notas;
+
+            query = query.AsNoTracking().OrderBy(n => n.Id)
+                .Where(nota => nota.IdUsuario == id);
+
+            return query.ToArray();
+        }
+
         public void Save()
         {
             _context.SaveChanges();
