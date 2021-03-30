@@ -46,9 +46,16 @@ namespace MyNotesProject
             services.AddDbContext<MyUsuarioDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentityCore<Usuario>(options => { });
+            //services.AddIdentityCore<Usuario>(options => { });
 
-            
+            services.AddIdentity<Usuario, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            })
+                .AddEntityFrameworkStores<MyUsuarioDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IUserClaimsPrincipalFactory<Usuario>, UsuarioClaimsPrincipalFactory>();
 
             services.AddTransient<ILembreteRepository, LembreteRepository>();
             

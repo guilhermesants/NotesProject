@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guilh\\source\\repos\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj": {}
+    "C:\\Repositorio\\NotesProject\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guilh\\source\\repos\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj": {
+    "C:\\Repositorio\\NotesProject\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guilh\\source\\repos\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj",
+        "projectUniqueName": "C:\\Repositorio\\NotesProject\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj",
         "projectName": "MyNotesProject",
-        "projectPath": "C:\\Users\\guilh\\source\\repos\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj",
+        "projectPath": "C:\\Repositorio\\NotesProject\\MyNotesProject\\MyNotesProject\\MyNotesProject.csproj",
         "packagesPath": "C:\\Users\\guilh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guilh\\source\\repos\\MyNotesProject\\MyNotesProject\\obj\\",
+        "outputPath": "C:\\Repositorio\\NotesProject\\MyNotesProject\\MyNotesProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guilh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,7 +38,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.78, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.3, )"
@@ -81,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

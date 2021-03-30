@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyNotesProject.Models;
@@ -12,14 +13,16 @@ namespace MyNotesProject.Controllers
     public class UsuarioController : Controller
     {
         private readonly UserManager<Usuario> _userManager;
-        private readonly IUserClaimsPrincipalFactory<Usuario> _userClaimsPrincipalFactory;
-        public UsuarioController(UserManager<Usuario> userManager, IUserClaimsPrincipalFactory<Usuario> userClaimsPrincipalFactory)
+        private readonly SignInManager<Usuario> _singInManager;
+       
+        public UsuarioController(UserManager<Usuario> userManager, SignInManager<Usuario> singInManager)
         {
             _userManager = userManager;
-            _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
+            _singInManager = singInManager;
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> RegistroUsuario(RegisitroUsuario model)
         {
             if (ModelState.IsValid)
@@ -33,9 +36,16 @@ namespace MyNotesProject.Controllers
                         Id = Guid.NewGuid().ToString(),
                         UserName = model.UserName
                     };
-                    var result = await _userManager.CreateAsync(user, model.Password);
+
+                    var resultUser = await _userManager.CreateAsync(user, model.Password);
+                    if (resultUser.Succeeded)
+                    {
+                        //await _singInManager.SignInAsync(user, false);
+                        return View("Success");
+                    }
                 }
-                return View("Success");
+                ModelState.AddModelError(String.Empty, "Já existe usuário com este nome");
+
             }
             return View();
         }
@@ -52,6 +62,8 @@ namespace MyNotesProject.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginUsuarioModel model)
         {
             if (ModelState.IsValid)
@@ -62,16 +74,13 @@ namespace MyNotesProject.Controllers
                 {
                     if (await _userManager.CheckPasswordAsync(user, model.Password))
                     {
-                        var principal = await _userClaimsPrincipalFactory.CreateAsync(user);
+                        await _singInManager.SignInAsync(user, false);
 
-                        await HttpContext.SignInAsync("Identity.Application", principal);
-
-                        //return RedirectToAction("ListarLembretes", new { id = user.Id});
-                        return RedirectToAction("AreaDoUsuario", new { id = user.Id });
+                        return RedirectToAction("AreaDoUsuario");
                     }
 
-                    ModelState.AddModelError("", "Usuário ou senha inválida");
                 }
+                ModelState.AddModelError("", "Usuário ou senha inválida");
             }
             return View();
         }
@@ -87,10 +96,17 @@ namespace MyNotesProject.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AreaDoUsuario(string? id)
+        public async Task<IActionResult> AreaDoUsuario()
         {
             
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _singInManager.SignOutAsync();
+            return RedirectToRoute(new { controller = "Usuario", action = "Login" });
         }
     }
 }
