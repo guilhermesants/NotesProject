@@ -14,7 +14,6 @@ using Microsoft.Extensions.Hosting;
 using MyNotesProject.Context;
 using MyNotesProject.Models;
 using MyNotesProject.Repositories;
-using MyNotesProject.UsuarioStore;
 
 namespace MyNotesProject
 {

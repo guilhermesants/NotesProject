@@ -33,15 +33,15 @@ namespace MyNotesProject.Controllers
                 {
                     user = new Usuario()
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        
                         UserName = model.UserName
                     };
 
                     var resultUser = await _userManager.CreateAsync(user, model.Password);
                     if (resultUser.Succeeded)
                     {
-                        //await _singInManager.SignInAsync(user, false);
-                        return View("Success");
+                        await _singInManager.SignInAsync(user, false);
+                        return RedirectToAction("AreaDoUsuario");
                     }
                 }
                 ModelState.AddModelError(String.Empty, "Já existe usuário com este nome");

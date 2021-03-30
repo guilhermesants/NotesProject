@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNotesProject.Context;
 
-namespace MyNotesProject.Migrations_DataContextIdentity
+namespace MyNotesProject.Migrations.Identity
 {
     [DbContext(typeof(MyUsuarioDbContext))]
-    [Migration("20210219224533_InitialCreateIdentity")]
-    partial class InitialCreateIdentity
+    [Migration("20210330210053_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

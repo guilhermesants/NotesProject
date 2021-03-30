@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MyNotesProject.Migrations_DataContextIdentity
+namespace MyNotesProject.Migrations.Identity
 {
-    public partial class InitialCreateIdentity : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

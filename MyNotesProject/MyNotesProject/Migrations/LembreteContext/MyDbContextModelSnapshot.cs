@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNotesProject.Context;
 
-namespace MyNotesProject.Migrations_DataContext
+namespace MyNotesProject.Migrations.LembreteContext
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20210219224453_InitialCreate")]
-    partial class InitialCreate
+    partial class MyDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,18 +29,18 @@ namespace MyNotesProject.Migrations_DataContext
                     b.Property<DateTime>("Data_Lembrete")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IdUsuario")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Nome_Lembrete")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("descricao_Lembrete")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("usuarioId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdUsuario");
+                    b.HasIndex("usuarioId");
 
                     b.ToTable("notas");
                 });
@@ -99,14 +97,16 @@ namespace MyNotesProject.Migrations_DataContext
 
                     b.HasKey("Id");
 
-                    b.ToTable("usuarios");
+                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("MyNotesProject.Models.Nota", b =>
                 {
-                    b.HasOne("MyNotesProject.Models.Usuario", null)
+                    b.HasOne("MyNotesProject.Models.Usuario", "usuario")
                         .WithMany()
-                        .HasForeignKey("IdUsuario");
+                        .HasForeignKey("usuarioId");
+
+                    b.Navigation("usuario");
                 });
 #pragma warning restore 612, 618
         }

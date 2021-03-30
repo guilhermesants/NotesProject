@@ -41,7 +41,7 @@ namespace MyNotesProject.Repositories
             IQueryable<Nota> query = _context.notas;
 
             query = query.AsNoTracking().OrderBy(n => n.Id)
-                .Where(nota => nota.IdUsuario == id);
+                .Where(nota => nota.usuario.Id == id);
 
             return query.ToArray();
         }

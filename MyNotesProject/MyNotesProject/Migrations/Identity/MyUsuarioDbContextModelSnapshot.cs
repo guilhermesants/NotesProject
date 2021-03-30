@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyNotesProject.Context;
 
-namespace MyNotesProject.Migrations_DataContextIdentity
+namespace MyNotesProject.Migrations.Identity
 {
     [DbContext(typeof(MyUsuarioDbContext))]
     partial class MyUsuarioDbContextModelSnapshot : ModelSnapshot

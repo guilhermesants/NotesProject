@@ -20,12 +20,12 @@ namespace MyNotesProject.Context
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Usuario>(org =>
-            {
-                org.ToTable("usuarios");
-                org.HasKey(x => x.Id);
-                org.HasMany<Nota>().WithOne().HasForeignKey(x => x.IdUsuario).IsRequired(false);
-            });
+            //builder.Entity<Usuario>(org =>
+            //{
+            //    org.ToTable("AspNetUsers");
+            //    org.HasKey(x => x.Id);
+            //    org.HasMany<Nota>().WithOne().HasForeignKey(x => x.IdUsuario).IsRequired(false);
+            //});
         }
     }
 }
